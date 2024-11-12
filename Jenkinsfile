@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJs' // Define Node.js installation globally
-            }
-
     stages {
         stage('Checkout') {
             steps {
@@ -23,7 +19,7 @@ pipeline {
             steps {
                 script {
                     nodejs('NodeJs') {
-                        bat 'npm run build --prod'
+                      bat 'npm run build --prod'
                     }
                     
                 }
