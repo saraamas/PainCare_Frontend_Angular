@@ -27,17 +27,17 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                     def scannerHome = tool 'SonarScanner';
-                    withSonarQubeEnv('SonarQube') {
-                      bat """
-                          ${scannerHome}\\bin\\sonar-scanner ^
-                          -Dsonar.projectKey=PAINCARE_FRONT ^
-                          -Dsonar.host.url=http://localhost:9000 ^
-                          -Dsonar.login=sqp_104e5844eff7f637d4decd7c6bbc96eb9b8ddc10 ^
-                          -Dsonar.sources=src ^
-                          -Dsonar.exclusions="**/node_modules/**"
-                      """
-                          }
+                  docker.image('sonarsource/sonar-scanner-cli').inside {
+                        sh """
+                            sonar-scanner \
+                            -Dsonar.projectKey=PAINCARE_FRONT \
+                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.login=sqp_104e5844eff7f637d4decd7c6bbc96eb9b8ddc10 \
+                            -Dsonar.sources=src \
+                            -Dsonar.exclusions="**/node_modules/**"
+                        """
+                    }
+                    
                 }
             }
         }
