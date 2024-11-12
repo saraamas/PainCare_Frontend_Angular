@@ -14,7 +14,7 @@ pipeline {
         stage('Install Node.js') {
             steps {
                 nodejs('NodeJs') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
                 // sh 'npm install'
             }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     nodejs('NodeJs') {
-                        sh 'npm run build --prod'
+                        bat 'npm run build --prod'
                     }
                     
                 }
@@ -34,7 +34,7 @@ pipeline {
                 script {
                     def scannerHome = tool 'SonarScanner';
                     withSonarQubeEnv('SonarQube') {
-                        sh """
+                        bat """
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=PAINCARE_FRONT \
                             -Dsonar.host.url=http://localhost:9000 \
