@@ -32,7 +32,7 @@ pipeline {
                     withSonarQubeEnv('SonarQube') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=Angular_2 \
+                            -Dsonar.projectKey=PAINCARE_FRONT \
                             -Dsonar.host.url=http://localhost:9000 \
                             -Dsonar.login=sqp_7992fc47e7e98fc3277071f9941f43af0b9d0557 \
                             -Dsonar.sources=src \
@@ -65,7 +65,7 @@ pipeline {
                              <p>Vérifiez les détails de la build ici : <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                              <p>Cordialement,</p>
                              <p>Votre serveur Jenkins</p>""",
-                    to: 'ismailtelhouni123@gmail.com', // Remplacez par les adresses souhaitées
+                    to: 'saramasmoudi@gmail.com', // Remplacez par les adresses souhaitées
                     from:"chakra.hs.business@gmail.com",
                     replyTo:"chakra.hs.business@gmail.com",
                     mimeType: 'text/html'
@@ -83,7 +83,7 @@ pipeline {
                              <p>Vérifiez les détails de la build ici : <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                              <p>Cordialement,</p>
                              <p>Votre serveur Jenkins</p>""",
-                    to: 'ismailtelhouni123@gmail.com', // Remplacez par les adresses souhaitées
+                    to: 'saramasmoudi@gmail.com', // Remplacez par les adresses souhaitées
                     from:"chakra.hs.business@gmail.com",
                     replyTo:"chakra.hs.business@gmail.com",
                     mimeType: 'text/html'
