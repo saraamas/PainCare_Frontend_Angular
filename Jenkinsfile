@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/ismailtelhouni/PainCare_Frontend_Angular.git', branch: 'main'
+                git url: 'https://github.com/saraamas/PainCare_Frontend_Angular.git', branch: 'main'
             }
         }
         stage('Install Node.js') {
@@ -34,7 +34,7 @@ pipeline {
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=PAINCARE_FRONT \
                             -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.login=sqp_7992fc47e7e98fc3277071f9941f43af0b9d0557 \
+                            -Dsonar.login=sqp_b41f61e36ba2e98cdb80f6ddf3e647282327b275 \
                             -Dsonar.sources=src \
                             -Dsonar.exclusions="**/node_modules/**"
                         """
