@@ -7,12 +7,14 @@ pipeline {
                 git url: 'https://github.com/saraamas/PainCare_Frontend_Angular.git', branch: 'main'
             }
         }
-        stage('Install Node.js') {
+          stage('Install Node.js') {
             steps {
                 nodejs('NodeJs') {
-                    bat 'npm install'
+                    bat 'npm cache clean --force' // Clear cache
+                    bat 'rmdir /s /q node_modules' // Delete node_modules folder
+                    bat 'del package-lock.json'    // Delete package-lock.json
+                    bat 'npm install'              // Reinstall dependencies
                 }
-                // sh 'npm install'
             }
         }
         stage('Build Angular') {
@@ -65,7 +67,7 @@ pipeline {
                              <p>Vérifiez les détails de la build ici : <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                              <p>Cordialement,</p>
                              <p>Votre serveur Jenkins</p>""",
-                    to: 'saramasmoudi@gmail.com', // Remplacez par les adresses souhaitées
+                    to: 'saramasmoudi2001@gmail.com', // Remplacez par les adresses souhaitées
                     from:"chakra.hs.business@gmail.com",
                     replyTo:"chakra.hs.business@gmail.com",
                     mimeType: 'text/html'
@@ -83,7 +85,7 @@ pipeline {
                              <p>Vérifiez les détails de la build ici : <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                              <p>Cordialement,</p>
                              <p>Votre serveur Jenkins</p>""",
-                    to: 'saramasmoudi@gmail.com', // Remplacez par les adresses souhaitées
+                    to: 'saramasmoudi2001@gmail.com', // Remplacez par les adresses souhaitées
                     from:"chakra.hs.business@gmail.com",
                     replyTo:"chakra.hs.business@gmail.com",
                     mimeType: 'text/html'
