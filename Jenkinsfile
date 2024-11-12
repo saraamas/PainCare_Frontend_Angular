@@ -27,16 +27,16 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                  docker.image('sonarsource/sonar-scanner-cli').inside {
-                        sh """
-                            sonar-scanner \
-                            -Dsonar.projectKey=PAINCARE_FRONT \
-                            -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.login=sqp_104e5844eff7f637d4decd7c6bbc96eb9b8ddc10 \
-                            -Dsonar.sources=src \
-                            -Dsonar.exclusions="**/node_modules/**"
-                        """
-                    }
+                    def scannerHome = tool 'SonarScanner'  // Make sure 'SonarScanner' is installed in Jenkins tools
+
+                    bat """
+                        ${scannerHome}\\bin\\sonar-scanner.bat ^
+                        -Dsonar.projectKey=PAINCARE_FRONT ^
+                        -Dsonar.host.url=http://localhost:9000 ^
+                        -Dsonar.login=sqp_104e5844eff7f637d4decd7c6bbc96eb9b8ddc10 ^
+                        -Dsonar.sources=src ^
+                        -Dsonar.exclusions="**/node_modules/**"
+                    """
                     
                 }
             }
