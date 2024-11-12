@@ -10,9 +10,6 @@ pipeline {
           stage('Install Node.js') {
             steps {
                 nodejs('NodeJs') {
-                    bat 'npm cache clean --force' // Clear cache
-                    bat 'rmdir /s /q node_modules' // Delete node_modules folder
-                    bat 'del package-lock.json'    // Delete package-lock.json
                     bat 'npm install'              // Reinstall dependencies
                 }
             }
