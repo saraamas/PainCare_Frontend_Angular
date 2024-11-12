@@ -33,7 +33,7 @@ pipeline {
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=PAINCARE_FRONT \
                             -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.login=sqp_b41f61e36ba2e98cdb80f6ddf3e647282327b275 \
+                            -Dsonar.login=squ_875fd8d3778040acd9dd03872542de41e9cb9a98\
                             -Dsonar.sources=src \
                             -Dsonar.exclusions="**/node_modules/**"
                         """
